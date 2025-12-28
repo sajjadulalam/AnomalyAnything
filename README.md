@@ -1,7 +1,33 @@
-# Severity-Aware Synthetic Anomaly Generation (Course Project)
-
 This repository contains **my own experimental extensions and code** for:
 **Advanced Machine Learning for Anomaly Detection (WS 2025/26)**.
+anomalyanything-severity-study/
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── configs/
+│   ├── exp1_severity.yaml
+│   ├── exp2_syn_vs_real.yaml
+│   └── exp3_contamination.yaml
+├── src/
+│   ├── __init__.py
+│   ├── utils.py
+│   ├── datasets.py
+│   ├── synthgen.py
+│   ├── generate_anomalies.py
+│   ├── models_ae.py
+│   ├── train_autoencoder.py
+│   ├── train_patchcore.py
+│   ├── evaluate.py
+│   ├── metrics.py
+│   └── plots.py
+├── experiments/
+│   ├── run_exp1.py
+│   ├── run_exp2.py
+│   └── run_exp3.py
+└── scripts/
+    ├── download_data.sh
+    └── run_all.sh# Severity-Aware Synthetic Anomaly Generation (Course Project)
+
 
 ## What I implemented (extensions)
 1. **Severity-controlled synthetic anomaly generation** (mild/moderate/severe prompts).
