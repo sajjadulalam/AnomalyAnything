@@ -1,0 +1,17 @@
+# data
+data/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# venv
+.venv/
+venv/
+.env/
+
+# system
+.DS_Store
+
+# outputs can be committed (recommended), but if you want to keep repo small:
+# outputs/
