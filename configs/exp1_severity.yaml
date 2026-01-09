@@ -1,0 +1,33 @@
+experiment: exp1_severity
+datasets:
+  - name: mvtec
+    root: data/mvtec
+    classes: ["bottle"]     # change to ["all"] or list multiple
+  - name: visa
+    root: data/visa
+    classes: ["candle"]     # remove this block if you don't use VisA
+
+generator:
+  method: fallback          # "fallback" or "anomalyanything"
+  out_root: data/generated
+  images_per_normal: 1
+  prompts:
+    mild: "small scratch on the surface"
+    moderate: "visible scratch across the surface"
+    severe: "large crack breaking through the surface"
+
+training:
+  seeds: [0, 1, 2]
+  limit_normals: 200        # max normal train images per class (speed control)
+  img_size: 256
+  batch_size: 16
+  ae:
+    epochs: 5
+    lr: 0.001
+  patchcore:
+    backbone: "resnet18"
+    num_neighbors: 5
+
+evaluation:
+  metrics: ["auc", "f1", "precision", "recall"]
+  save_curves: true

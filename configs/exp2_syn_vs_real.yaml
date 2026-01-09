@@ -1,0 +1,34 @@
+experiment: exp2_syn_vs_real
+datasets:
+  - name: mvtec
+    root: data/mvtec
+    classes: ["bottle"]
+  - name: visa
+    root: data/visa
+    classes: ["candle"]
+
+generator:
+  method: fallback
+  out_root: data/generated
+  images_per_normal: 1
+  severity_used: moderate
+  prompts:
+    moderate: "visible scratch across the surface"
+
+training:
+  seeds: [0, 1, 2]
+  limit_normals: 200
+  limit_real_anomalies: 200
+  img_size: 256
+  batch_size: 16
+  modes: ["real_only", "synthetic_only", "mixed_50_50"]
+  ae:
+    epochs: 5
+    lr: 0.001
+  patchcore:
+    backbone: "resnet18"
+    num_neighbors: 5
+
+evaluation:
+  metrics: ["auc", "f1", "precision", "recall"]
+  save_curves: true
